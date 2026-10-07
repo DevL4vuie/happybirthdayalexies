@@ -4,7 +4,7 @@ export const config = {
   from: 'LouiG',
   introLine: 'You have a surprise waiting for you!',
   menuHint: 'Pick one to open',
-  watermark: 'created by yours truly, LouiG,loy,louizg,langlang,love, loveydoveyyy sugarplum og uban pa',
+  watermark: 'created by yours truly, LouiG,loy,louizg dina nko i apil tung uban ',
 }
 
 export type SectionId = 'pictures' | 'cake' | 'letter' | 'flower' | 'song'
