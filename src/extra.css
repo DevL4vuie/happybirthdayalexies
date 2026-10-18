@@ -166,3 +166,25 @@
   background: transparent;
   z-index: 10;
 }
+
+/* Music player (beside the layout buttons) */
+.mp { display: flex; align-items: center; gap: 0.25rem; padding: 0 0.5rem 0 0.25rem; min-height: 44px; border-radius: 999px; border: 2.5px solid var(--ink); background: var(--paper); }
+.mp-btn { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--paper); }
+.mp-btn.ghost { background: transparent; color: var(--ink); }
+.mp-btn:disabled { opacity: 0.4; cursor: default; }
+.mp-title { display: flex; align-items: center; gap: 0.3rem; max-width: 120px; padding: 0 0.2rem; font-weight: 800; font-size: 0.85rem; }
+.mp-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mp-panel { position: fixed; z-index: 40; left: -700px; top: 0; width: min(88vw, 300px); padding: 0.6rem; background: var(--paper); border: 2.5px solid var(--ink); border-radius: 16px; box-shadow: 0 3px 0 var(--ink); color: var(--ink); font-family: var(--body); }
+.mp-panel.open { left: 50%; top: auto; bottom: calc(150px + env(safe-area-inset-bottom)); transform: translateX(-50%); }
+.mp-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+.mp-x { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+.mp-video { width: 100%; height: 200px; background: #000; border-radius: 10px; overflow: hidden; }
+.mp-video iframe { width: 100%; height: 100%; display: block; }
+.mp-list { list-style: none; margin: 0.5rem 0 0; padding: 0; max-height: 180px; overflow: auto; }
+.mp-list button { width: 100%; min-height: 36px; padding: 0 0.7rem; text-align: left; font-weight: 800; border-radius: 10px; }
+.mp-list button.on { background: var(--butter); }
+/* Player fix: keep the layout-button style off the player's buttons */
+.seg .mp button { min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; font-weight: inherit; }
+.seg .mp .mp-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--paper); }
+.seg .mp .mp-btn.ghost { background: transparent; color: var(--ink); }
+.seg .mp .mp-title { padding: 0 0.2rem; font-weight: 800; }

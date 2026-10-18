@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { SectionShell } from '../components/SectionShell'
 import { Lightbox } from '../components/Lightbox'
+import MusicPlayer from '../components/MusicPlayer'
 import { photos } from '../config'
 import { computeLayout, layouts, rest, type LayoutId } from '../lib/layouts'
 
@@ -10,6 +11,7 @@ const wrap = (a: number) => ((((a + 180) % 360) + 360) % 360) - 180
 export default function Pictures({ onBack }: { onBack: () => void }) {
   const [layout, setLayout] = useState<LayoutId>('table')
   const [open, setOpen] = useState<number | null>(null)
+  const [musicOn, setMusicOn] = useState(false)
   const [size, setSize] = useState({ w: 0, h: 0 })
   const boxRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
@@ -139,9 +141,10 @@ export default function Pictures({ onBack }: { onBack: () => void }) {
               {l.label}
             </button>
           ))}
+          <MusicPlayer onPlayingChange={setMusicOn} />
         </div>
       </div>
-      {open !== null && <Lightbox photos={photos} index={open} onChange={setOpen} onClose={() => setOpen(null)} />}
+      {open !== null && <Lightbox photos={photos} index={open} onChange={setOpen} onClose={() => setOpen(null)} muteVideo={musicOn} />}
     </SectionShell>
   )
 }
